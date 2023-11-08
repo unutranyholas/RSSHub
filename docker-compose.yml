@@ -5,7 +5,7 @@ services:
         # two ways to enable puppeteer:
         # * comment out marked lines, then use this image instead: diygod/rsshub:chromium-bundled
         # * (consumes more disk space and memory) leave everything unchanged
-        image: diygod/rsshub
+        image: diygod/rsshub:chromium-bundled
         restart: always
         ports:
             - '1200:1200'
@@ -17,15 +17,15 @@ services:
             PROXY_URI: 'socks5h://warp-socks:9091'
         depends_on:
             - redis
-            - browserless  # marked
+#            - browserless  # marked
 
-    browserless:  # marked
-        image: browserless/chrome  # marked
-        restart: always  # marked
-        ulimits:  # marked
-          core:  # marked
-            hard: 0  # marked
-            soft: 0  # marked
+#    browserless:  # marked
+#        image: browserless/chrome  # marked
+#        restart: always  # marked
+#        ulimits:  # marked
+#          core:  # marked
+#            hard: 0  # marked
+#            soft: 0  # marked
 
     redis:
         image: redis:alpine
